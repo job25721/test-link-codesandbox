@@ -10,7 +10,13 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [todoInput, setTodo] = useState("");
+  const [textLoop, setTextLoop] = useState([]);
   useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < counter; i++) {
+      arr.push(i);
+    }
+    setTextLoop(arr);
     console.log("conter changed " + counter);
   }, [counter]);
 
@@ -84,6 +90,9 @@ function App() {
       />
       <button onClick={addTodo}>add todo</button>
       <Footer />
+      {textLoop.map((num) => (
+        <p key={num.toString()}>my text</p>
+      ))}
     </>
   );
 }
